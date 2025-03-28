@@ -152,6 +152,17 @@ export const Navbar = () => {
       >
         <Monogram highlight />
       </RouterLink>
+      <RouterLink
+        unstable_viewTransition
+        prefetch="intent"
+        to={location.pathname === '/projects' ? '/projects' : '/'}
+        data-navbar-item
+        className={styles.logo}
+        aria-label={`${config.name}, ${config.role}`}
+        onClick={handleMobileNavClick}
+      >
+        Projects
+      </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>

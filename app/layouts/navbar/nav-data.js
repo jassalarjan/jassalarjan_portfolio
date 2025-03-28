@@ -5,9 +5,13 @@ export const navLinks = [
     label: 'About',
     pathname: '/#details',
   },
+  // {
+  //   label: 'Projects',
+  //   pathname: '/#project-1',
+  // },
   {
-    label: 'Projects',
-    pathname: '/#project-1',
+    label: 'All Projects',
+    pathname: '/allprojects',
   },
   // {
   //   label: 'Articles',

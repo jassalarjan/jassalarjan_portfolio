@@ -3,6 +3,7 @@ import { Text } from '~/components/text';
 import { classes } from '~/utils/style';
 import config from '~/config.json';
 import styles from './footer.module.css';
+import { useEffect, useState } from 'react';
 
 // export const Footer = ({ className }) => (
 //   <footer className={classes(styles.footer, className)}>
@@ -18,7 +19,17 @@ import styles from './footer.module.css';
 // );
 
 
-export const Footer = ({ className }) => {
+export const Footer = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   const bubbles = Array.from({ length: 128 }, (_, i) => ({
     size: 2 + Math.random() * 4,
     distance: 6 + Math.random() * 4,
@@ -46,15 +57,17 @@ export const Footer = ({ className }) => {
           ))}
         </div>
         <div className="content">
-          <footer className={classes(styles.footer, className)}>
-            <Text size="s" align="center">
-              <span className={styles.date}>
-                {`© ${new Date().getFullYear()} ${config.name}.`}
-              </span>
-              <Link secondary className={styles.link} href="/humans.txt" target="_self">
-                Crafted by yours truly
-              </Link>
-            </Text>
+          <footer className={classes(styles.footer)}>
+            <div className={styles.content}>
+              <div className={styles.copyright}>
+                © {new Date().getFullYear()} All rights reserved.
+              </div>
+              <div className={styles.links}>
+                <a href="https://github.com/HamishMW/portfolio" target="_blank" rel="noopener noreferrer">
+                  View Source
+                </a>
+              </div>
+            </div>
           </footer>
         </div>
       </div>
